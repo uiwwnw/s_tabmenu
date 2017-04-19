@@ -1,0 +1,69 @@
+input{
+  display: none;
+}
+$tab-width: 500px;
+$tab-height: 400px;
+.tab-menu {
+  z-index: 2;
+  position: relative;
+  width: $tab-width;
+  height: $tab-height;
+  .tab-box {
+    $tab-menu: 3;
+    $tab-menu-height: 30px;
+    display: block;
+    float: left;
+    height: $tab-menu-height;
+    line-height: $tab-menu-height;
+    text-align: center;
+    > i {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      height: $tab-menu-height;
+      transition: all .5s;
+      background: hsl(30, 20%, 25%);
+      //@include transition();
+    }
+    > span {
+      //@extend .light;
+      color: #fff;
+    }
+    .content {
+      position: absolute;
+      display: none;
+      overflow: hidden;
+      overflow-y: auto;
+      top: $tab-menu-height;
+      left: 0;
+      width: $tab-width;
+      height: $tab-height - $tab-menu-height;
+      background: hsl(30, 20%, 40%);
+    }
+    @for $i from 3 through $tab-menu {
+      //필요 시 확장가능,
+      &.item-#{$tab-menu} {
+        width: calc(100% / #{$tab-menu});
+        @for $i from 1 through $tab-menu {
+          &:nth-child(#{$i}) {
+            i {
+              left: #{(($i - 1) / $tab-menu * 100%)};
+              width: calc(100% / #{$tab-menu});
+            }
+          }
+        }
+      }
+    }
+    input:checked {
+      & + i {
+        background: hsl(30, 20%, 40%);
+        & + span {
+        }
+      }
+      & ~ .content {
+        display: block;
+        text-align: left;
+      }
+    }
+  }
+}
