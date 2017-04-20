@@ -13,6 +13,11 @@ $tab-height: 400px;
     height: $tab-menu-height;
     line-height: $tab-menu-height;
     text-align: center;
+    &:first-child{
+      >i{
+        border-left: 0;
+      }
+    }
     > input[type="radio"] {
       display: none;
     }
@@ -21,13 +26,18 @@ $tab-height: 400px;
       position: absolute;
       top: 0;
       height: $tab-menu-height;
+      border-left: 1px solid #fff;
       transition: all .5s;
+      cursor:pointer;
+      box-sizing: border-box;
       background: hsl(30, 20%, 25%);
       //@include transition();
     }
     > span {
       //@extend .light;
+      // display: block;
       color: #fff;
+      // cursor:pointer;
     }
     .content {
       position: absolute;
