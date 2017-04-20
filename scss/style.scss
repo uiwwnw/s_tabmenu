@@ -40,13 +40,15 @@ $tab-height: 400px;
       // cursor:pointer;
     }
     .content {
+      $padding : 10px;
       position: absolute;
       display: none;
+      padding: 10px;
       overflow: hidden;
       overflow-y: auto;
       top: $tab-menu-height;
       left: 0;
-      width: $tab-width;
+      width: $tab-width - $padding * 2;
       height: $tab-height - $tab-menu-height;
       background: hsl(30, 20%, 40%);
     }
